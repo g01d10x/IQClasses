@@ -100,7 +100,11 @@ static KeyBoardManager *kbManager;
             
             //Adding movement or disturbed distance to origin.(Don't be trapped on this calculation)
             rootViewRect.origin.x += move>disturbDistance?move:disturbDistance;
-            [self setRootViewFrame:rootViewRect];
+ 
+            if (CGRectGetMinX(rootViewRect) == CGRectGetMinX(appFrame))
+                [self setRootViewFrame:[[UIScreen mainScreen] applicationFrame]];
+            else
+                [self setRootViewFrame:rootViewRect];
         }
     }
 }
@@ -147,7 +151,11 @@ static KeyBoardManager *kbManager;
             
             //Adding movement or disturbed distance to origin.(Don't be trapped on this calculation)
             rootViewRect.origin.x -= move>disturbDistance?move:disturbDistance;
-            [self setRootViewFrame:rootViewRect];
+  
+            if (CGRectGetMinX(rootViewRect) == CGRectGetMinX(appFrame))
+                [self setRootViewFrame:[[UIScreen mainScreen] applicationFrame]];
+            else
+                [self setRootViewFrame:rootViewRect];
         }
     }
 }
@@ -194,7 +202,11 @@ static KeyBoardManager *kbManager;
             
             //Adding movement or disturbed distance to origin.(Don't be trapped on this calculation)
             rootViewRect.origin.y -= move>disturbDistance?move:disturbDistance;
-            [self setRootViewFrame:rootViewRect];
+            
+            if (CGRectGetMinY(rootViewRect) == CGRectGetMinY(appFrame))
+                [self setRootViewFrame:[[UIScreen mainScreen] applicationFrame]];
+            else
+                [self setRootViewFrame:rootViewRect];
         }
     }
 }
@@ -241,8 +253,12 @@ static KeyBoardManager *kbManager;
             
             //Adding movement or disturbed distance to origin.(Don't be trapped on this calculation)
             rootViewRect.origin.y += move>disturbDistance?move:disturbDistance;
-            [self setRootViewFrame:rootViewRect];
-        }
+            
+            if (CGRectGetMinY(rootViewRect) == CGRectGetMinY(appFrame))
+                [self setRootViewFrame:[[UIScreen mainScreen] applicationFrame]];
+            else
+                [self setRootViewFrame:rootViewRect];
+       }
     }
 }
 
