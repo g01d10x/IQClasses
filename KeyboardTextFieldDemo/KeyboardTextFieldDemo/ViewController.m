@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "KeyBoardManager.h"
+#import "IQKeyBoardManager.h"
 
 @implementation ViewController
 
@@ -25,17 +25,17 @@
     
     /*Don't forget to change class of UIView(self.view) to UIScrollView on xib*/
  
-    [KeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField1 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
-    [KeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField2 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
-    [KeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField3 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
-    [KeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField4 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
-    [KeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField5 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
-    [KeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField6 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
-    [KeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField7 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
-    [KeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField8 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
-    [KeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField9 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
-    [KeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField10 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
-    [KeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField11 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
+    [IQKeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField1 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
+    [IQKeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField2 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
+    [IQKeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField3 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
+    [IQKeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField4 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
+    [IQKeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField5 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
+    [IQKeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField6 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
+    [IQKeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField7 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
+    [IQKeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField8 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
+    [IQKeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField9 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
+    [IQKeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField10 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
+    [IQKeyBoardManager addPreviousNextDoneButtonOnKeyboard:textField11 target:self previousAction:@selector(previousClicked:) nextAction:@selector(nextClicked:) doneAction:@selector(doneClicked:)];
     
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -133,4 +133,15 @@
     return YES;
 }
 
+- (BOOL)shouldAutorotate{
+    return YES;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskAll;
+}
 @end

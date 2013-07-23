@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "CountryStateHandler.h"
+#import "IQCountryStateHandler.h"
 
 @implementation ViewController
 
@@ -26,10 +26,10 @@
     [tableViewCountry setRowHeight:[UIScreen mainScreen].bounds.size.height/20.0];
     [tableViewStates setRowHeight:[UIScreen mainScreen].bounds.size.height/20.0];
     
-    countriesList = [CountryStateHandler countries];
+    countriesList = [IQCountryStateHandler countries];
     if ([countriesList count])
     {
-        statesForCurrentCountry = [CountryStateHandler statesForCountry:[countriesList objectAtIndex:0]];
+        statesForCurrentCountry = [IQCountryStateHandler statesForCountry:[countriesList objectAtIndex:0]];
         [tableViewCountry selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
     }
     
@@ -111,7 +111,7 @@
 {
     if (tableView == tableViewCountry)
     {
-        statesForCurrentCountry = [CountryStateHandler statesForCountry:[countriesList objectAtIndex:indexPath.row]];
+        statesForCurrentCountry = [IQCountryStateHandler statesForCountry:[countriesList objectAtIndex:indexPath.row]];
         [tableViewStates reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }
     else if(tableView == tableViewStates)

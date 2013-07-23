@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF4301B6179E8EAB00FADAC6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF4301B5179E8EAB00FADAC6 /* Default-568h@2x.png */; };
 		C0938AF91780BCB6007452A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0938AF81780BCB6007452A6 /* UIKit.framework */; };
 		C0938AFB1780BCB6007452A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0938AFA1780BCB6007452A6 /* Foundation.framework */; };
 		C0938AFD1780BCB6007452A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0938AFC1780BCB6007452A6 /* CoreGraphics.framework */; };
@@ -15,12 +16,13 @@
 		C0938B091780BCB6007452A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0938B081780BCB6007452A6 /* AppDelegate.m */; };
 		C0938B0C1780BCB6007452A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0938B0B1780BCB6007452A6 /* ViewController.m */; };
 		C0938B0F1780BCB7007452A6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0938B0D1780BCB7007452A6 /* ViewController.xib */; };
-		C0938B171780BCD4007452A6 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C0938B161780BCD4007452A6 /* CoreDataHelper.m */; };
+		C0938B171780BCD4007452A6 /* IQCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C0938B161780BCD4007452A6 /* IQCoreDataHelper.m */; };
 		C0938B191780BD95007452A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0938B181780BD95007452A6 /* CoreData.framework */; };
 		C0B63B881781ED85008D3B64 /* CoreDataUserInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0B63B861781ED85008D3B64 /* CoreDataUserInfo.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF4301B5179E8EAB00FADAC6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C0938AF41780BCB6007452A6 /* CoreDataDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0938AF81780BCB6007452A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C0938AFA1780BCB6007452A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -34,11 +36,11 @@
 		C0938B0A1780BCB6007452A6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C0938B0B1780BCB6007452A6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C0938B0E1780BCB7007452A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		C0938B151780BCD4007452A6 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataHelper.h; path = ../CoreDataHelper.h; sourceTree = "<group>"; };
-		C0938B161780BCD4007452A6 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataHelper.m; path = ../CoreDataHelper.m; sourceTree = "<group>"; };
+		C0938B151780BCD4007452A6 /* IQCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IQCoreDataHelper.h; path = ../IQCoreDataHelper.h; sourceTree = "<group>"; };
+		C0938B161780BCD4007452A6 /* IQCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IQCoreDataHelper.m; path = ../IQCoreDataHelper.m; sourceTree = "<group>"; };
 		C0938B181780BD95007452A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0B63B871781ED85008D3B64 /* CoreDataUserInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataUserInfo.xcdatamodel; sourceTree = "<group>"; };
-		C0B63B8D1781EE6D008D3B64 /* CoreDataDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataDefinition.h; sourceTree = "<group>"; };
+		C0B63B8D1781EE6D008D3B64 /* IQCoreDataDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQCoreDataDefinition.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		C0938AE91780BCB5007452A6 = {
 			isa = PBXGroup;
 			children = (
+				AF4301B5179E8EAB00FADAC6 /* Default-568h@2x.png */,
 				C0938AFE1780BCB6007452A6 /* CoreDataDemo */,
 				C0938AF71780BCB6007452A6 /* Frameworks */,
 				C0938AF51780BCB6007452A6 /* Products */,
@@ -113,9 +116,9 @@
 		C0B63B8A1781ED90008D3B64 /* Core Data Helper */ = {
 			isa = PBXGroup;
 			children = (
-				C0938B151780BCD4007452A6 /* CoreDataHelper.h */,
-				C0938B161780BCD4007452A6 /* CoreDataHelper.m */,
-				C0B63B8D1781EE6D008D3B64 /* CoreDataDefinition.h */,
+				C0938B151780BCD4007452A6 /* IQCoreDataHelper.h */,
+				C0938B161780BCD4007452A6 /* IQCoreDataHelper.m */,
+				C0B63B8D1781EE6D008D3B64 /* IQCoreDataDefinition.h */,
 			);
 			name = "Core Data Helper";
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			files = (
 				C0938B031780BCB6007452A6 /* InfoPlist.strings in Resources */,
 				C0938B0F1780BCB7007452A6 /* ViewController.xib in Resources */,
+				AF4301B6179E8EAB00FADAC6 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +190,7 @@
 				C0938B051780BCB6007452A6 /* main.m in Sources */,
 				C0938B091780BCB6007452A6 /* AppDelegate.m in Sources */,
 				C0938B0C1780BCB6007452A6 /* ViewController.m in Sources */,
-				C0938B171780BCD4007452A6 /* CoreDataHelper.m in Sources */,
+				C0938B171780BCD4007452A6 /* IQCoreDataHelper.m in Sources */,
 				C0B63B881781ED85008D3B64 /* CoreDataUserInfo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

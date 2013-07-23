@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "KeyBoardManager.h"
+#import "IQKeyBoardManager.h"
 #import "ViewController.h"
 
 @implementation AppDelegate
@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [KeyBoardManager installKeyboardManager];
+    [IQKeyBoardManager installKeyboardManager];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

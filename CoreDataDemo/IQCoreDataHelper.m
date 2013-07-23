@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "CoreDataHelper.h"
+#import "IQCoreDataHelper.h"
 #import <CoreData/CoreData.h>
 
 /*************************************/
@@ -15,7 +15,7 @@
 //Class method are used because these methods are not dependent upon class iVars.
 
 //Created by Iftekhar. 18/4/13.
-@interface CoreDataHelper()
+@interface IQCoreDataHelper()
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
@@ -34,7 +34,7 @@
 /*************************************/
 
 //Actual Implementation.
-@implementation CoreDataHelper
+@implementation IQCoreDataHelper
 
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
@@ -168,12 +168,12 @@
 
 #pragma mark - Public Methods
 
-static CoreDataHelper *sharedDataBase;
+static IQCoreDataHelper *sharedDataBase;
 
-+(CoreDataHelper*)helper
++(IQCoreDataHelper*)helper
 {
     if (sharedDataBase == nil)
-        sharedDataBase = [[CoreDataHelper alloc] init];
+        sharedDataBase = [[IQCoreDataHelper alloc] init];
     
     return sharedDataBase;
 }

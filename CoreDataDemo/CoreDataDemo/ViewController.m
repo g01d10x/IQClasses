@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "CoreDataHelper.h"
+#import "IQCoreDataHelper.h"
 
 @implementation ViewController
 
@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
     
-    arrayRecords = [[CoreDataHelper helper] getAllRecord];
+    arrayRecords = [[IQCoreDataHelper helper] getAllRecord];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -83,8 +83,8 @@
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
                           textFieldName.text,RECORD_NAME,
                           [NSNumber numberWithInteger:[textFieldNumber.text integerValue]],RECORD_NUMBER, nil];
-    [[CoreDataHelper helper] saveRecord:dict];
-    arrayRecords = [[CoreDataHelper helper] getAllRecord];
+    [[IQCoreDataHelper helper] saveRecord:dict];
+    arrayRecords = [[IQCoreDataHelper helper] getAllRecord];
     [tableViewRecord reloadData];
 }
 

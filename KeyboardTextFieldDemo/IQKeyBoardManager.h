@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KeyBoardManager : NSObject
+@interface IQKeyBoardManager : NSObject
 {
     //TextField or TextView object.
     UIView *textFieldView;
+    
+    CGFloat animationDuration;
 }
 
 //Call it on your AppDelegate;
@@ -23,7 +25,7 @@
 
 
 /*Additional Function*/
-@interface KeyBoardManager(ToolbarOnKeyboard)
+@interface IQKeyBoardManager(ToolbarOnKeyboard)
 
 //Helper functions to add Done button on keyboard.
 +(void)addDoneButtonOnKeyboard:(UITextField*)textField target:(id)target action:(SEL)action;

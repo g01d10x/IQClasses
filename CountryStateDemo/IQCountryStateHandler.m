@@ -7,12 +7,12 @@
 
 
 
-#import "CountryStateHandler.h"
+#import "IQCountryStateHandler.h"
 
 static NSDictionary *countryDictionary;
 static NSDictionary *stateDictionary;
 
-@implementation CountryStateHandler
+@implementation IQCountryStateHandler
 
 +(void)initialize
 {

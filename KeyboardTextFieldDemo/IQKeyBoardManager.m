@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 
 
-#import "KeyBoardManager.h"
-#import "SegmentedNextPrevious.h"
+#import "IQKeyBoardManager.h"
+#import "IQSegmentedNextPrevious.h"
 
 //Singleton object.
-static KeyBoardManager *kbManager;
+static IQKeyBoardManager *kbManager;
 
-@implementation KeyBoardManager
+@implementation IQKeyBoardManager
 
 #pragma mark - Initializing
 //Call it on our App Delegate.
@@ -20,7 +20,7 @@ static KeyBoardManager *kbManager;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        kbManager = [[KeyBoardManager alloc] init];
+        kbManager = [[IQKeyBoardManager alloc] init];
     });
 }
 
@@ -33,6 +33,7 @@ static KeyBoardManager *kbManager;
         dispatch_once(&onceToken, ^{
             /*Registering for keyboard notification*/
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
             
             /*Registering for textField notification*/
@@ -42,6 +43,7 @@ static KeyBoardManager *kbManager;
             /*Registering for textView notification*/
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:nil];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewdDidEndEditing:) name:UITextViewTextDidEndEditingNotification object:nil];
+            animationDuration = 0.25;
         });
     }
     return self;
@@ -51,7 +53,7 @@ static KeyBoardManager *kbManager;
 //Helper function to manipulate RootViewController's frame with animation.
 -(void)setRootViewFrame:(CGRect)frame
 {
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animationDuration animations:^{
         [textFieldView.window.rootViewController.view setFrame:frame];
     }];
 }
@@ -79,12 +81,12 @@ static KeyBoardManager *kbManager;
     //Getting Application Frame.
     CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
     
+    //Calculate movement which should be scrolled.
+    float move = kbSize.width-CGRectGetMinX(textFieldViewRect);
+    
     //If textField is showing on screen(i.e. y origin is positive.
     if (CGRectGetMaxX(textFieldViewRect)<=CGRectGetWidth(appFrame))
     {
-        //Calculate movement which should be scrolled.
-        float move = kbSize.width-CGRectGetMinX(textFieldViewRect);
-        
         //If move is positive, Then Keyboard must be hiding our textField object. 
         if(move >= 0)
         {
@@ -106,6 +108,20 @@ static KeyBoardManager *kbManager;
             else
                 [self setRootViewFrame:rootViewRect];
         }
+    }
+    //Else if our rootViewController frame's y is negative(Disturbed).
+    else if(CGRectGetMinX(rootViewRect)>CGRectGetMinX(appFrame))
+    {
+        //Calculating disturbed distance.
+        CGFloat disturbDistance = CGRectGetMinX(appFrame)-CGRectGetMinX(rootViewRect);
+        
+        //Adding movement or disturbed distance to origin.(Don't be trapped on this calculation)
+        rootViewRect.origin.x += move>disturbDistance?move:disturbDistance;
+        
+        if (CGRectGetMinX(rootViewRect) == CGRectGetMinX(appFrame))
+            [self setRootViewFrame:[[UIScreen mainScreen] applicationFrame]];
+        else
+            [self setRootViewFrame:rootViewRect];
     }
 }
 
@@ -130,12 +146,12 @@ static KeyBoardManager *kbManager;
     //Getting Application Frame.
     CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
     
+    //Calculate movement which should be scrolled.
+    float move = CGRectGetMaxX(textFieldViewRect)-(CGRectGetWidth(window.frame)-kbSize.width);
+    
     //If textField is showing on screen(i.e. y origin is positive.
     if (CGRectGetMinX(textFieldViewRect)>=CGRectGetMinX(appFrame))
     {
-        //Calculate movement which should be scrolled.
-        float move = CGRectGetMaxX(textFieldViewRect)-(CGRectGetWidth(window.frame)-kbSize.width);
-        
         //If move is positive, Then Keyboard must be hiding our textField object. 
         if(move >= 0)
         {
@@ -157,6 +173,20 @@ static KeyBoardManager *kbManager;
             else
                 [self setRootViewFrame:rootViewRect];
         }
+    }
+    //Else if our rootViewController frame's y is negative(Disturbed).
+    else if(CGRectGetMinX(rootViewRect)<CGRectGetMinX(appFrame))
+    {
+        //Calculating disturbed distance.
+        CGFloat disturbDistance = CGRectGetMinX(rootViewRect)-CGRectGetMinX(appFrame);
+        
+        //Adding movement or disturbed distance to origin.(Don't be trapped on this calculation)
+        rootViewRect.origin.x -= move>disturbDistance?move:disturbDistance;
+        
+        if (CGRectGetMinX(rootViewRect) == CGRectGetMinX(appFrame))
+            [self setRootViewFrame:[[UIScreen mainScreen] applicationFrame]];
+        else
+            [self setRootViewFrame:rootViewRect];
     }
 }
 
@@ -181,12 +211,12 @@ static KeyBoardManager *kbManager;
     //Getting Application Frame.
     CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
     
+    //Calculate movement which should be scrolled.
+    float move = CGRectGetMaxY(textFieldViewRect)-(CGRectGetHeight(window.frame)-kbSize.height);
+    
     //If textField is showing on screen(i.e. y origin is positive.
     if (CGRectGetMinY(textFieldViewRect)>=CGRectGetMinY(appFrame))
     {
-        //Calculate movement which should be scrolled.
-        float move = CGRectGetMaxY(textFieldViewRect)-(CGRectGetHeight(window.frame)-kbSize.height);
-        
         //If move is positive, Then Keyboard must be hiding our textField object. 
         if(move >= 0)
         {
@@ -208,6 +238,20 @@ static KeyBoardManager *kbManager;
             else
                 [self setRootViewFrame:rootViewRect];
         }
+    }
+    //Else if our rootViewController frame's y is negative(Disturbed).
+    else if(CGRectGetMinY(rootViewRect)<CGRectGetMinY(appFrame))
+    {
+        //Calculating disturbed distance.
+        CGFloat disturbDistance = CGRectGetMinY(rootViewRect)-CGRectGetMinY(appFrame);
+        
+        //Adding movement or disturbed distance to origin.(Don't be trapped on this calculation)
+        rootViewRect.origin.y -= move>disturbDistance?move:disturbDistance;
+        
+        if (CGRectGetMinY(rootViewRect) == CGRectGetMinY(appFrame))
+            [self setRootViewFrame:[[UIScreen mainScreen] applicationFrame]];
+        else
+            [self setRootViewFrame:rootViewRect];
     }
 }
 
@@ -232,12 +276,12 @@ static KeyBoardManager *kbManager;
     //Getting Application Frame.
     CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
     
+    //Calculate movement which should be scrolled.
+    float move = kbSize.height-CGRectGetMinY(textFieldViewRect);
+    
     //If textField is showing on screen(i.e. y origin is positive.
     if (CGRectGetMaxY(textFieldViewRect)<=CGRectGetHeight(appFrame))
     {
-        //Calculate movement which should be scrolled.
-        float move = kbSize.height-CGRectGetMinY(textFieldViewRect);
-        
         //If move is positive, Then Keyboard must be hiding our textField object. 
         if(move >= 0)
         {
@@ -260,6 +304,20 @@ static KeyBoardManager *kbManager;
                 [self setRootViewFrame:rootViewRect];
        }
     }
+    //Else if our rootViewController frame's y is negative(Disturbed).
+    else if(CGRectGetMinY(rootViewRect)>CGRectGetMinY(appFrame))
+    {
+        //Calculating disturbed distance.
+        CGFloat disturbDistance = CGRectGetMinY(appFrame)-CGRectGetMinY(rootViewRect);
+        
+        //Adding movement or disturbed distance to origin.(Don't be trapped on this calculation)
+        rootViewRect.origin.y += move>disturbDistance?move:disturbDistance;
+        
+        if (CGRectGetMinY(rootViewRect) == CGRectGetMinY(appFrame))
+            [self setRootViewFrame:[[UIScreen mainScreen] applicationFrame]];
+        else
+            [self setRootViewFrame:rootViewRect];
+    }
 }
 
 
@@ -267,13 +325,25 @@ static KeyBoardManager *kbManager;
 // Keyboard Will hide. So setting rootViewController to it's default frame.
 - (void)keyboardWillHide:(NSNotification*)aNotification
 {
+    CGFloat aDuration = [[aNotification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    if (aDuration!= 0.0f)
+    {
+        animationDuration = [[aNotification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    }
+
     //Setting rootViewController frame to it's original position.
     [self setRootViewFrame:[[UIScreen mainScreen] applicationFrame]];
 }
 
 //UIKeyboard Did shown. Adjusting RootViewController's frame according to device orientation.
-- (void)keyboardDidShow:(NSNotification*)aNotification
+-(void)keyboardWillShow:(NSNotification*)aNotification
 {
+    CGFloat aDuration = [[aNotification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    if (aDuration!= 0.0f)
+    {
+        animationDuration = [[aNotification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    }
+    
     switch ([[UIApplication sharedApplication] statusBarOrientation])
     {
         case UIInterfaceOrientationLandscapeLeft:
@@ -288,10 +358,13 @@ static KeyBoardManager *kbManager;
         case UIInterfaceOrientationPortraitUpsideDown:
             [self handlePortraitUpsideDownWithKeyboardNotification:aNotification];
             break;
-     
         default:
             break;
     }
+}
+
+- (void)keyboardDidShow:(NSNotification*)aNotification
+{
 }
 
 #pragma mark - UITextField Delegate methods
@@ -327,7 +400,7 @@ static KeyBoardManager *kbManager;
 
 
 /*Additional Function*/
-@implementation KeyBoardManager(ToolbarOnKeyboard)
+@implementation IQKeyBoardManager(ToolbarOnKeyboard)
 
 #pragma mark - Toolbar on UIKeyboard
 +(void)addDoneButtonOnKeyboard:(UITextField*)textField target:(id)target action:(SEL)action
@@ -363,7 +436,7 @@ static KeyBoardManager *kbManager;
     //Create a button to show on phoneNumber keyboard to resign it. Adding a selector to resign it.
     UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:target action:doneAction];
 
-    SegmentedNextPrevious *segControl = [[SegmentedNextPrevious alloc] initWithTarget:target previousSelector:previousAction nextSelector:nextAction];
+    IQSegmentedNextPrevious *segControl = [[IQSegmentedNextPrevious alloc] initWithTarget:target previousSelector:previousAction nextSelector:nextAction];
 //
     UIBarButtonItem *segButton = [[UIBarButtonItem alloc] initWithCustomView:segControl];
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SegmentedNextPrevious : UISegmentedControl
+@interface IQSegmentedNextPrevious : UISegmentedControl
 {
     id buttonTarget;
     SEL previousSelector;

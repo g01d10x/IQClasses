@@ -3,7 +3,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CountryStateHandler : NSObject
+@interface IQCountryStateHandler : NSObject
 
 +(NSArray*)countries;
 +(NSArray*)statesForCountry:(NSString*)country;

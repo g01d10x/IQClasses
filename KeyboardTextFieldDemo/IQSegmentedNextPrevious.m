@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Denis Kutlubaev. All rights reserved.
 //
 
-#import "SegmentedNextPrevious.h"
+#import "IQSegmentedNextPrevious.h"
 
-@implementation SegmentedNextPrevious
+@implementation IQSegmentedNextPrevious
 
 -(id)initWithTarget:(id)target previousSelector:(SEL)pSelector nextSelector:(SEL)nSelector
 {
@@ -27,21 +27,27 @@
     return self;
 }
 
-- (void)segmentedControlHandler:(SegmentedNextPrevious*)sender
+- (void)segmentedControlHandler:(IQSegmentedNextPrevious*)sender
 {
     switch ([sender selectedSegmentIndex])
     {
-            case 0:
+        case 0:
         {
-            [buttonTarget performSelector:previousSelector withObject:nil];
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[buttonTarget class] instanceMethodSignatureForSelector:previousSelector]];
+            invocation.target = buttonTarget;
+            invocation.selector = previousSelector;
+            [invocation invoke];
         }
             break;
-            case 1:
+        case 1:
         {
-            [buttonTarget performSelector:nextSelector withObject:nil];
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[buttonTarget class] instanceMethodSignatureForSelector:nextSelector]];
+            invocation.target = buttonTarget;
+            invocation.selector = nextSelector;
+            [invocation invoke];
         }
-            default:
-                break;
+        default:
+            break;
     }
 }
 

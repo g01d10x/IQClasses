@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CoreDataDefinition.h"
+#import "IQCoreDataDefinition.h"
 
 //Created by Iftekhar. 17/4/13.
-@interface CoreDataHelper : NSObject
+@interface IQCoreDataHelper : NSObject
 
 //Commonly Used.
-+(CoreDataHelper*)helper;
++(IQCoreDataHelper*)helper;
 /********************/
 
 -(NSArray*)getAllRecord;

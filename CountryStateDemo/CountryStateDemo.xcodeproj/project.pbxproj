@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF4301B8179E905800FADAC6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF4301B7179E905800FADAC6 /* Default-568h@2x.png */; };
 		C0C84F0617776391002B00EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0C84F0517776391002B00EC /* UIKit.framework */; };
 		C0C84F0817776391002B00EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0C84F0717776391002B00EC /* Foundation.framework */; };
 		C0C84F0A17776391002B00EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0C84F0917776391002B00EC /* CoreGraphics.framework */; };
@@ -16,11 +17,12 @@
 		C0C84F1917776391002B00EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C84F1817776391002B00EC /* ViewController.m */; };
 		C0C84F1C17776391002B00EC /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0C84F1A17776391002B00EC /* ViewController.xib */; };
 		C0C84F26177763BC002B00EC /* Country.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C84F22177763BC002B00EC /* Country.plist */; };
-		C0C84F27177763BC002B00EC /* CountryStateHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C84F24177763BC002B00EC /* CountryStateHandler.m */; };
+		C0C84F27177763BC002B00EC /* IQCountryStateHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C84F24177763BC002B00EC /* IQCountryStateHandler.m */; };
 		C0C84F28177763BC002B00EC /* State.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C84F25177763BC002B00EC /* State.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF4301B7179E905800FADAC6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C0C84F0117776391002B00EC /* CountryStateDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryStateDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C84F0517776391002B00EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C0C84F0717776391002B00EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -35,8 +37,8 @@
 		C0C84F1817776391002B00EC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C0C84F1B17776391002B00EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		C0C84F22177763BC002B00EC /* Country.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Country.plist; sourceTree = "<group>"; };
-		C0C84F23177763BC002B00EC /* CountryStateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryStateHandler.h; sourceTree = "<group>"; };
-		C0C84F24177763BC002B00EC /* CountryStateHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryStateHandler.m; sourceTree = "<group>"; };
+		C0C84F23177763BC002B00EC /* IQCountryStateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQCountryStateHandler.h; sourceTree = "<group>"; };
+		C0C84F24177763BC002B00EC /* IQCountryStateHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQCountryStateHandler.m; sourceTree = "<group>"; };
 		C0C84F25177763BC002B00EC /* State.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = State.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +59,7 @@
 		C0C84EF617776390002B00EC = {
 			isa = PBXGroup;
 			children = (
+				AF4301B7179E905800FADAC6 /* Default-568h@2x.png */,
 				C0C84F2B17776E99002B00EC /* CountryStateHandler */,
 				C0C84F0B17776391002B00EC /* CountryStateDemo */,
 				C0C84F0417776391002B00EC /* Frameworks */,
@@ -109,8 +112,8 @@
 		C0C84F2B17776E99002B00EC /* CountryStateHandler */ = {
 			isa = PBXGroup;
 			children = (
-				C0C84F23177763BC002B00EC /* CountryStateHandler.h */,
-				C0C84F24177763BC002B00EC /* CountryStateHandler.m */,
+				C0C84F23177763BC002B00EC /* IQCountryStateHandler.h */,
+				C0C84F24177763BC002B00EC /* IQCountryStateHandler.m */,
 				C0C84F22177763BC002B00EC /* Country.plist */,
 				C0C84F25177763BC002B00EC /* State.plist */,
 			);
@@ -172,6 +175,7 @@
 				C0C84F1C17776391002B00EC /* ViewController.xib in Resources */,
 				C0C84F26177763BC002B00EC /* Country.plist in Resources */,
 				C0C84F28177763BC002B00EC /* State.plist in Resources */,
+				AF4301B8179E905800FADAC6 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +189,7 @@
 				C0C84F1217776391002B00EC /* main.m in Sources */,
 				C0C84F1617776391002B00EC /* AppDelegate.m in Sources */,
 				C0C84F1917776391002B00EC /* ViewController.m in Sources */,
-				C0C84F27177763BC002B00EC /* CountryStateHandler.m in Sources */,
+				C0C84F27177763BC002B00EC /* IQCountryStateHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +305,7 @@
 				C0C84F2117776391002B00EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
