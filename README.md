@@ -14,4 +14,4 @@ CoreData Helper
 =========
 Demo project contains coreData helper classes. Use CoreDataHelper to handle all the CoreData related query. Just drag and drop in your project and use it as you want.
 
-If you found any bugs, please report.
+If you found any bugs, please report me.
